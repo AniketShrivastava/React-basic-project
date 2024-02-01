@@ -6,7 +6,7 @@ function App() {
   const [length, setLength] = useState(8)
   const [numberAllowed, setNumberAllowed] = useState(false)
   const [charAllowed, setCharAllowed] = useState(false)
-  const [Password, setPassword] = useState("")
+  const [password, setPassword] = useState("")
 
   //useRef
   const passwordRef =useRef(null);
@@ -25,10 +25,10 @@ function App() {
   },[length,numberAllowed,charAllowed,setPassword])
 
   const copyPasswordToClipboard = useCallback(()=>{
-    passwordRef.current?.select()
-    passwordRef.current?.setSelectionRang(0,101)
-    window.navigator.clipboard.writeText(Password)
-  },[Password])
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRang(0,101);
+    window.navigator.clipboard.writeText(password)
+  },[password])
   
 
   useEffect(() => {
@@ -45,13 +45,16 @@ function App() {
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
           <input
             type="text"
-            value={Password}
+            value={password}
             className="outline-none w-full py-1 px-3"
-            placeholder="password"
+            placeholder="Password"
+          
             readOnly
             ref={passwordRef}
           />
-          <button onClick={copyPasswordToClipboard} className="outline-none bg-blue-500 text-white px-3 py-1 shrink-0 curser-pointer">Copy</button>
+          <button onClick={copyPasswordToClipboard} className="outline-none
+           bg-blue-500 text-white px-3
+            py-1 shrink-0 curser-pointer">Copy</button>
         </div>
         <div className="flex text-sm gap-x-2">
           <div className="flex items-center gap-x-1">
